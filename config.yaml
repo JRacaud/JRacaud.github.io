@@ -8,7 +8,6 @@ theme: cupper-hugo-theme
 enableGitInfo: true
 
 taxonomies:
-  snippets: snippets
   tag: tags
 
 permalinks:

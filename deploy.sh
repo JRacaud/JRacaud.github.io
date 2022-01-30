@@ -6,8 +6,6 @@ DEPLOY_FOLDER=.deploy
 
 read -p "Commit message: " message
 
-git submodule update --remote --merge
-
 rm -rf $PUBLIC_FOLDER
 hugo --minify
 
