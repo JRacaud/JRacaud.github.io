@@ -1,14 +1,8 @@
 ---
-date: "2017-06-26T18:27:58+01:00"
-title: "Home"
+date: "2022-01-30T16:17:00+01:00"
+title: "Jonathan Racaud"
 ---
 
-Welcome to **Cupper**: An accessibility-friendly Hugo theme, ported from the [original Cupper](https://github.com/ThePacielloGroup/cupper) project. Here are some of its features:
+Welcome to my humble space on the internet where I experiment with new technologies and ideas.
 
-{{< ticks >}}
-* Screen reader and keyboard accessible
-* Responsive
-* Numerous shortcodes
-* Toggleable dark theme
-* Toggleable table of contents per blog post
-{{< /ticks >}}
+You can find some of my side projects on my [github](https://github.com/Jonathan-Racaud/) account, where I mostly experiment with the Beef programming language.
