@@ -33,7 +33,7 @@ if [[ $? -ne 0 ]]; then
 fi
 
 git add .
-git commit -am $message
+git commit -am "$message"
 git push
 
 cd $ROOT
