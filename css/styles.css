@@ -1050,3 +1050,15 @@ h1 svg {
   background: rgba(0,0,0,.8);
   color: #fefefe;
 }
+
+@media only screen and (min-width: 768px) {
+    .mobile-only {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .desktop-only {
+        display: none;
+    }
+}
