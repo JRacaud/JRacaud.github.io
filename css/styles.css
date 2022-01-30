@@ -1,9 +1,11 @@
 /* Fonts */
 @font-face {
     font-family: 'FiraCode';
-    src: url('https://jracaud.com/css/fonts/FiraCode-Bold.woff2') format('woff2'), url('https://jracaud.com/css/fonts/FiraCode-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
+    src: url('https://jracaud.com/css/fonts/FiraCode-Regular.woff2') format('woff2'), url('https://jracaud.com/css/fonts/FiraCode-Regular.woff') format('woff');
+}
+@font-face {
+    font-family: 'Raleway', sans-serif;
+    src: url('https://jracaud.com/css/fonts/Raleway-Regular.ttf') format('ttf');
 }
 *,
 *::before,
@@ -17,7 +19,7 @@
 }
 html {
     font-size: calc(1em + 0.33vw);
-    font-family: Arial, Helvetica Neue, sans-serif;
+    font-family: 'Raleway', sans-serif;
     line-height: 1.5;
     color: #111;
     background-color: #fefefe;
@@ -115,7 +117,7 @@ h1,
 h2,
 h3,
 h4 {
-    font-family: Miriam Libre, serif;
+    font-family: 'Raleway', sans-serif;
     line-height: 1.125;
 }
 h1 {
@@ -130,7 +132,7 @@ h3 {
 h4,
 h5 {
     font-size: 1rem;
-    font-family: PT Sans, sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 h5 {
     font-size: 0.85rem;
@@ -152,14 +154,16 @@ pre,
     border: 1px solid;
 }
 code {
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-family: 'FiraCode';
     font-size: 0.85em;
 }
 .cmd {
+    font-family: 'FiraCode';
     padding: 0.75rem;
     background: #111;
 }
 .cmd code {
+    font-family: 'FiraCode';
     color: #fefefe;
     white-space: pre-wrap;
 }
@@ -385,8 +389,8 @@ caption {
     line-height: 1.125;
     list-style: none;
 }
-.patterns li + li {
-}
+/* .patterns li + li {
+} */
 .patterns ul ul {
     margin-left: 0.75rem;
 }
@@ -512,7 +516,7 @@ caption {
 }
 .note.warning {
     border-left: 0;
-    background-image: url(https://jracaud.com/css/images/stripe.svg);
+    background-image: url('https://jracaud.com/css/images/stripe.svg');
     background-size: 0.5rem auto;
     background-repeat: repeat-y;
 }
@@ -531,7 +535,7 @@ caption {
     width: 1rem;
     height: 1rem;
     margin-right: 0.25rem;
-    background-image: url(https://jracaud.com/css/images/icon-tick.svg);
+    background-image: url('https://jracaud.com/css/images/icon-tick.svg');
     background-size: 100% auto;
     position: absolute;
     left: -1.25rem;
@@ -570,6 +574,9 @@ code[class*="language-"], pre[class*="language-"] {
   text-shadow: none;
   /* filter: grayscale(100%); */
 }
+code span {
+    margin-top: 0;
+}
 pre[class*=language-][data-line] {
     padding: 1em 0 0 2.25rem;
 }
@@ -583,18 +590,19 @@ pre[class*=language-] code * {
 .code-annotated {
     overflow-y: hidden;
     overflow-x: auto;
-    padding: 1.5rem;
-    border: 1px solid;
-    white-space: pre;
+    /* padding: 1.5rem; */
+    /* border: 1px solid; */
+    /* white-space: pre; */
     counter-reset: annotation;
 }
-.highlight {
-    background: #ddd;
+.highlighted-code {
+    background: #444;
     padding: 0.0625rem 0.33rem;
     border-radius: 0.5rem;
+    color: blanchedalmond;
 }
-.numbered .highlight::after,
-.code-annotated.numbered + ol li::before  {
+.numbered-annotation .highlighted-code::after,
+.code-annotated.numbered-annotation + ol li::before  {
     counter-increment: annotation;
     content: counter(annotation);
     font-weight: bold;
@@ -606,11 +614,11 @@ pre[class*=language-] code * {
     padding: 0.125em 0.5em;
     vertical-align: 0.33em;
 }
-.code-annotated.numbered + ol {
+.code-annotated.numbered-annotation + ol {
     list-style: none;
     counter-reset: annotation;
 }
-.code-annotated.numbered + ol li::before {
+.code-annotated.numbered-annotation + ol li::before {
     font-size: 0.66em;
     margin-right: 0.33em;
     vertical-align: 0.25em;
