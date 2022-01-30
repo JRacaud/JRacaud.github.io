@@ -21,6 +21,10 @@ jobs:
           hugo-version: 'latest'
           # extended: true
 
+      # This is a test
+      - name: Remove previous
+        run: rm -rf ./public
+
       - name: Build
         run: hugo --minify
 
