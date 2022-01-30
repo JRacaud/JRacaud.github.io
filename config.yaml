@@ -1,4 +1,4 @@
-baseURL: https://jracaud.com
+baseURL: https://www.jracaud.com
 languageCode: en-us
 defaultContentLanguage: en
 title: JRacaud
@@ -39,8 +39,8 @@ menu:
     - name: Home
       url: /
       weight: 1
-    - name: Blog
-      url: /blog/
+    - name: Articles
+      url: /articles/
       weight: 2
 
 markup:
