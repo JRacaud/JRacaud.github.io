@@ -1,4 +1,4 @@
-baseURL: https://www.jracaud.com
+baseURL: https://jracaud.com
 languageCode: en-us
 defaultContentLanguage: en
 title: JRacaud
@@ -17,8 +17,8 @@ imaging:
   quality: 99
 
 params:
-  description: An accessibility-friendly Hugo theme, ported from the [original Cupper](https://github.com/ThePacielloGroup/cupper) project.
-  homeMetaContent: An accessibility-friendly Hugo theme, ported from the original Cupper project.
+  description: Software developer that experiment with stuffs.
+  homeMetaContent: Software developer that experiment with stuffs.
   footer: Made with [Hugo](https://gohugo.io/). <br>Themed by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme).
   # For more date formats see https://gohugo.io/functions/format/
   dateFormat: 2 Jan 2006
@@ -40,6 +40,9 @@ menu:
     - name: Articles
       url: /articles/
       weight: 2
+    - name: Snippets
+      url: /snippets/
+      weight: 3
 
 markup:
   defaultMarkdownHandler: goldmark
