@@ -6,12 +6,14 @@ DEPLOY_FOLDER=.deploy
 
 read -p "Commit message: " message
 
+git submodule update
+
 rm -rf $PUBLIC_FOLDER
 hugo --minify
 
 if [[ $? -ne 0 ]]; then
     echo "[ERROR]: Cannot generate website. Aborting..."
-    read -s "Press enter to exit..."
+    read -p "Press enter to exit..."
     exit 1
 fi
 
@@ -26,7 +28,7 @@ cp -r $PUBLIC_FOLDER/* .
 
 if [[ $? -ne 0 ]]; then
     echo "[ERROR]: Cannot copy website. Aborting..."
-    read -s "Press enter to exit..."
+    read -p "Press enter to exit..."
     exit 1
 fi
 
