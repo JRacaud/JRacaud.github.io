@@ -4,8 +4,10 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=generator content="Hugo 0.92.1">
-<link rel=canonical href=https://jracaud.com/articles/hello_world/>
-<meta name=description content="That’s a bit empty More articles will come in the future. Stay tuned.">
+<link rel=canonical href=https://jracaud.com/articles/discovering_hugo/>
+<meta name=description content="So I decided to go with the static website generator called Hugo for building my blog. My first impression is that it is a good static site generator so far.
+It is written in Go, and for what I used of it, it is quite fast. Being accustomed to PHP static site generators, having the hot-reload code generation being fast was quite surprising in a good way.
+Alas, there’s one issue: it runs code inside of comments.">
 <link rel=apple-touch-icon sizes=180x180 href=https://jracaud.com/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=https://jracaud.com/favicon-32x32.png>
 <link rel=icon type=image/png sizes=16x16 href=https://jracaud.com/favicon-16x16.png>
@@ -16,7 +18,7 @@
 <style>body{visibility:hidden;opacity:0}</style>
 <style id=darkTheme>.intro-and-nav,.main-and-footer{filter:invert(100%)}*{background-color:inherit}img:not([src*=".svg"]),.colors,iframe,.demo-container{filter:invert(100%)}</style>
 <link rel=stylesheet type=text/css href=/css/styles.css>
-<title>Hello World | JRacaud</title>
+<title>Discovering Hugo | JRacaud</title>
 </head>
 <body>
 <a href=#main>skip to content</a>
@@ -64,7 +66,7 @@ dark theme: <input type=checkbox id=themer class=vh>
 <span aria-hidden=true></span>
 </label>
 </div>
-Made with <a href=https://gohugo.io/>Hugo</a>. <br>Themed by <a href=https://github.com/zwbetz-gh/cupper-hugo-theme>Cupper</a>.
+Made with <a href=https://gohugo.io/>Hugo</a>. <br>Base theme by <a href=https://github.com/zwbetz-gh/cupper-hugo-theme>Cupper</a>.
 </footer>
 </div>
 </header>
@@ -72,15 +74,68 @@ Made with <a href=https://gohugo.io/>Hugo</a>. <br>Themed by <a href=https://git
 <div>
 <main id=main>
 <h1><svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false"><use xlink:href="#bookmark"/></svg>
-Hello World
+Discovering Hugo
 </h1>
 <div class=date>
-<strong>Publish date: </strong>1 Jan 0001
-<br>
-<strong>Last updated: </strong>30 Jan 2022
+<strong>Publish date: </strong>30 Jan 2022
 </div>
-<h1 id=thats-a-bit-empty>That&rsquo;s a bit empty</h1>
-<p>More articles will come in the future. Stay tuned.</p>
+<p>So I decided to go with the static website generator called Hugo for building my blog.
+My first impression is that it is a good static site generator so far.</p>
+<p>It is written in Go, and for what I used of it, it is quite fast. Being accustomed to PHP static site generators, having the hot-reload code generation being fast was quite surprising in a good way.</p>
+<p>Alas, there&rsquo;s one issue: it runs code inside of comments.</p>
+<p>So I was trying to change my theme so that I can have annotated code + syntax highlight:
+<div class="code-annotated numbered-annotation">
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-swift data-lang=swift>
+<span style=color:#66d9ef>func</span> <span class=highlighted-code>myFunc()</span> {
+    <span style=color:#66d9ef>let</span> name = <span class=highlighted-code><span style=color:#e6db74>&#34;Jonathan&#34;</span></span>
+}
+</code></pre></div>
+</div></p>
+<p>By default, the theme looks like this:
+<div class="code-annotated numbered-annotation">
+<pre tabindex=0><code>
+func <span class=highlighted-code>myFunc()</span> {
+    let name = <span class=highlighted-code>&#34;Jonathan&#34;</span>
+}
+</code></pre>
+</div></p>
+<p>For this, Hugo allows the definition of short codes that can be used to generate HTML the way we want it.</p>
+<p>The snippet above is written with the following code:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-javascript data-lang=javascript>{{<span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>code</span> <span style=color:#a6e22e>$numbered</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;true&#34;</span> <span style=color:#a6e22e>language</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;swift&#34;</span> <span style=color:#f92672>&gt;</span>}}
+<span style=color:#a6e22e>func</span> [[[<span style=color:#a6e22e>myFunc</span>()]]] {
+	<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>name</span> <span style=color:#f92672>=</span> [[[<span style=color:#e6db74>&#34;Jonathan&#34;</span>]]]
+}
+{{<span style=color:#f92672>&lt;</span> <span style=color:#a6e22e>code</span> <span style=color:#f92672>&gt;</span>}}
+</code></pre></div><p>When you insert this into your markdown file, it will use the code.html file to generate the correct html. The code for this shortcode is this:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-html data-lang=html>{{ $numbered := .Get &#34;numbered&#34; }}
+{{ $language := .Get &#34;language&#34; }}
+{{ $code := .Inner }}
+{{ $highlighted := transform.Highlight $code $language }}
+{{ $highlighted := replace $highlighted &#34;[[[&#34; &#34;&lt;<span style=color:#f92672>span</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;highlighted-code&#39;</span>&gt;&#34; }}
+{{ $highlighted := replace $highlighted &#34;]]]&#34; &#34;&lt;/<span style=color:#f92672>span</span>&gt;&#34; }}
+&lt;<span style=color:#f92672>div</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#39;code-annotated {{ if and ($numbered) (ne $numbered &#34;false&#34;) }}numbered-annotation{{ end }}&#39;</span>&gt;
+    {{ $highlighted | safeHTML }}
+&lt;/<span style=color:#f92672>div</span>&gt;
+</code></pre></div><p>I had a strange formatting issue because I messed-up the CSS. So I went full on debug mode, commenting code everywhere. Looking at every changes on the final page. At one point I commented code in the shortcode file and it looked like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-html data-lang=html>{{ $numbered := .Get &#34;numbered&#34; }}
+{{ $language := .Get &#34;language&#34; }}
+{{ $code := .Inner }}
+{{ $highlighted := transform.Highlight $code $language }}
+
+<span style=color:#75715e>&lt;!-- {{ $highlighted := replace $highlighted &#34;[[[&#34; &#34;&lt;span class=&#39;highlighted-code&#39;&gt;&#34; }}
+</span><span style=color:#75715e>{{ $highlighted := replace $highlighted &#34;]]]&#34; &#34;&lt;/span&gt;&#34; }}
+</span><span style=color:#75715e>&lt;div class=&#39;{{ if and ($numbered) (ne $numbered &#34;false&#34;) }}numbered-annotation{{ end }}&#39;&gt;
+</span><span style=color:#75715e>    {{ $highlighted | safeHTML }}
+</span><span style=color:#75715e>&lt;/div&gt; --&gt;</span>
+
+{{ $highlighted | safeHTML }}
+</code></pre></div><p>Which should have shown me the code being displayed with the <code>[[[]]]</code> pattern, but it kept showing me the annotated code.</p>
+<p>Turns out, Hugo will see template syntax inside of the html comments and still execute the code!</p>
+<p>The end result was that the <code>$highlighted</code> variable was still transformed correctly and the [[[]]] were replaced with the correct html.</p>
+<p>When I found out this behavior, I was so shocked by it that I had to pause my debugging session to archive that experience. Which is the article your are currently reading.</p>
+<p>Now that I fixed my CSS mistakes, the code displays with both color syntax and annotations.</p>
+<p>Except the quirks due to not knowing Hugo, it is quite easy to pick up and to customize.
+On this note, I&rsquo;m going back to fiddling with the theme and making it my own. Bye!</p>
 </main>
 <div id=disqus-container>
 </div>

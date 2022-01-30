@@ -596,6 +596,11 @@ pre[class*=language-] code * {
     counter-reset: annotation;
 }
 .highlighted-code {
+    background: #aaa;
+    padding: 0.0625rem 0.33rem;
+    border-radius: 0.5rem;
+}
+.highlighted {
     background: #444;
     padding: 0.0625rem 0.33rem;
     border-radius: 0.5rem;

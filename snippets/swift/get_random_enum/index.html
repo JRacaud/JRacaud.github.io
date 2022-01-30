@@ -65,14 +65,19 @@ dark theme: <input type=checkbox id=themer class=vh>
 <span aria-hidden=true></span>
 </label>
 </div>
-Made with <a href=https://gohugo.io/>Hugo</a>. <br>Themed by <a href=https://github.com/zwbetz-gh/cupper-hugo-theme>Cupper</a>.
+Made with <a href=https://gohugo.io/>Hugo</a>. <br>Base theme by <a href=https://github.com/zwbetz-gh/cupper-hugo-theme>Cupper</a>.
 </footer>
 </div>
 </header>
 <div class=main-and-footer>
 <div>
 <main id=main>
-<h1>Swift - Get random enum</h1>
+<h1><svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false"><use xlink:href="#bookmark"/></svg>
+Swift - Get random enum
+</h1>
+<div class=date>
+<strong>Publish date: </strong>30 Jan 2022
+</div>
 <h2 id=function-definition>Function definition</h2>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-swift data-lang=swift><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>getRandomEnum</span>&lt;T&gt;() -&gt; T? <span style=color:#66d9ef>where</span> T: RawRepresentable <span style=color:#f92672>&amp;</span> CaseIterable <span style=color:#f92672>&amp;&amp;</span> T.RawValue == Int {
     <span style=color:#66d9ef>let</span> max = Int(T.<span style=color:#66d9ef>self</span>.allCases.count)
@@ -110,6 +115,8 @@ It is not possible to know what value we should return in case of failure so we 
 <li>Here we say that we are only interested in enums for which the underlying type is an <code>Int</code>.</li>
 </ol>
 </main>
+<div id=disqus-container>
+</div>
 </div>
 </div>
 </div>
