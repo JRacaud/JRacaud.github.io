@@ -4,8 +4,9 @@
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=generator content="Hugo 0.92.1">
-<link rel=canonical href=https://jracaud.com/snippets/>
-<meta name=description content="Snippets">
+<link rel=canonical href=https://jracaud.com/snippets/swift/get_random_enum/>
+<meta name=description content="Function definition func getRandomEnum<T>() -> T? where T: RawRepresentable & CaseIterable && T.RawValue == Int { let max = Int(T.self.allCases.count) let value = Int.random(in: 0...max) return T(rawValue: value) } Usage let country: Countries = getRandomEnum() ?? .france let language: Languages = getRandomEnum() ?? .french Pre-requesite This function will only work for enum that are defined like this:
+enum Countries: Int, CaseIterable { case france = 0 case unitedKingdom case china case japan } Explanation The function relies on Swift’s generics and type infering to be able to get the correct random enum.">
 <link rel=apple-touch-icon sizes=180x180 href=https://jracaud.com/apple-touch-icon.png>
 <link rel=icon type=image/png sizes=32x32 href=https://jracaud.com/favicon-32x32.png>
 <link rel=icon type=image/png sizes=16x16 href=https://jracaud.com/favicon-16x16.png>
@@ -17,7 +18,7 @@
 <style id=darkTheme>.intro-and-nav,.main-and-footer{filter:invert(100%)}*{background-color:inherit}img:not([src*=".svg"]),.colors,iframe,.demo-container{filter:invert(100%)}</style>
 <link rel=stylesheet href=/css/prism.css media=none onload="this.media='all'">
 <link rel=stylesheet type=text/css href=/css/styles.css>
-<title>Snippets | JRacaud</title>
+<title>Swift - Get random enum | JRacaud</title>
 </head>
 <body>
 <a href=#main>skip to content</a>
@@ -52,7 +53,7 @@ Menu
 </a>
 </li>
 <li class=pattern>
-<a href=/snippets/ aria-current=page><svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50"><use xlink:href="#bookmark"/></svg>
+<a href=/snippets/><svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50"><use xlink:href="#bookmark"/></svg>
 <span class=text>Snippets</span>
 </a>
 </li>
@@ -72,24 +73,42 @@ Made with <a href=https://gohugo.io/>Hugo</a>. <br>Themed by <a href=https://git
 <div class=main-and-footer>
 <div>
 <main id=main>
-<h1>Snippets</h1>
-<input id=search type=text placeholder="Search by title..." aria-label="Search by title">
-<ul class=patterns-list id=list>
-<li>
-<h2>
-<a href=/snippets/swift/get_random_enum/><svg class="bookmark" aria-hidden="true" viewBox="0 0 40 50" focusable="false"><use xlink:href="#bookmark"/></svg>
-Swift - Get random enum
-</a>
-</h2>
-</li>
-<li>
-<h2>
-<a href=/snippets/hello_world/><svg class="bookmark" aria-hidden="true" viewBox="0 0 40 50" focusable="false"><use xlink:href="#bookmark"/></svg>
-Hello World
-</a>
-</h2>
-</li>
-</ul>
+<h1>Swift - Get random enum</h1>
+<h2 id=function-definition>Function definition</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-swift data-lang=swift><span style=color:#66d9ef>func</span> <span style=color:#a6e22e>getRandomEnum</span>&lt;T&gt;() -&gt; T? <span style=color:#66d9ef>where</span> T: RawRepresentable <span style=color:#f92672>&amp;</span> CaseIterable <span style=color:#f92672>&amp;&amp;</span> T.RawValue == Int {
+    <span style=color:#66d9ef>let</span> max = Int(T.<span style=color:#66d9ef>self</span>.allCases.count)
+    <span style=color:#66d9ef>let</span> value = Int.random(<span style=color:#66d9ef>in</span>: <span style=color:#ae81ff>0.</span>..max)
+
+    <span style=color:#66d9ef>return</span> T(rawValue: value)
+}
+</code></pre></div><h2 id=usage>Usage</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-swift data-lang=swift><span style=color:#66d9ef>let</span> country: Countries = getRandomEnum() ?? .france
+<span style=color:#66d9ef>let</span> language: Languages = getRandomEnum() ?? .french
+</code></pre></div><h2 id=pre-requesite>Pre-requesite</h2>
+<p>This function will only work for enum that are defined like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-swift data-lang=swift><span style=color:#66d9ef>enum</span> <span style=color:#a6e22e>Countries</span>: Int, CaseIterable {
+    <span style=color:#66d9ef>case</span> france = <span style=color:#ae81ff>0</span>
+    <span style=color:#66d9ef>case</span> unitedKingdom
+    <span style=color:#66d9ef>case</span> china
+    <span style=color:#66d9ef>case</span> japan
+}
+</code></pre></div><h2 id=explanation>Explanation</h2>
+<p>The function relies on Swift&rsquo;s generics and type infering to be able to get the correct random enum.</p>
+<p>Here&rsquo;s how to understand the function declaration. I&rsquo;ve put it on multiple line for easier reading here:
+<div class="code-annotated numbered"><code>
+func getRandomEnum<span class=highlight>&lt;T></span>() -> <span class=highlight>T?</span>
+<span class=highlight>where T:</span> <span class=highlight>RawRepresentable & CaseIterable</span>
+<span class=highlight>&& T.RawValue == Int </span> {}
+</code></div>
+</p>
+<ol>
+<li>We specify that it takes a generic type of T</li>
+<li>Because of the call to <code>T(rawValue: Int)</code> that returns a T? we also return that.
+It is not possible to know what value we should return in case of failure so we keep as well the nullable type.</li>
+<li>Start of the generic constraints.</li>
+<li>Constraints on the type T. <code>RawRepresentable</code> because the enum inherits from <code>Int</code> and <code>CaseIterable</code> because we need the <code>allCases</code> property.</li>
+<li>Here we say that we are only interested in enums for which the underlying type is an <code>Int</code>.</li>
+</ol>
 </main>
 </div>
 </div>
