@@ -8,6 +8,7 @@ theme: cupper-hugo-theme
 enableGitInfo: true
 
 taxonomies:
+  snippets: snippets
   tag: tags
 
 permalinks:
@@ -63,14 +64,14 @@ markup:
       unsafe: true
       xHTML: false
   highlight:
-    codeFences: false
+    codeFences: true
     hl_Lines: ""
-    lineNoStart: 1
+    lineNoStart: 0
     lineNos: false
     lineNumbersInTable: true
     noClasses: true
     style: monokai
-    tabWidth: 4
+    tabWidth: 2
   tableOfContents:
     endLevel: 6
     startLevel: 2
