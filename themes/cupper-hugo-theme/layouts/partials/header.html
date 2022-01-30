@@ -21,7 +21,9 @@
     </div>
     {{ partial "nav.html" . }}
     {{ if eq .Site.Params.moveFooterToHeader true }}
-      {{ partial "footer.html" . }}
+      <div class="desktop-only">
+        {{ partial "footer.html" . }}
+      </div>
     {{ end }}
   </div>
 </header>
