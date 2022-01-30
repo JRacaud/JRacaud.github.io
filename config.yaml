@@ -19,9 +19,9 @@ imaging:
 params:
   description: An accessibility-friendly Hugo theme, ported from the [original Cupper](https://github.com/ThePacielloGroup/cupper) project.
   homeMetaContent: An accessibility-friendly Hugo theme, ported from the original Cupper project.
-  footer: Made with [Hugo](https://gohugo.io/). Themed by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme).
+  footer: Made with [Hugo](https://gohugo.io/). <br>Themed by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme).
   # For more date formats see https://gohugo.io/functions/format/
-  dateFormat: Jan 2, 2006
+  dateFormat: 2 Jan 2006
   # codePenUser: someUser
   katex: true
   hideHeaderLinks: false
@@ -32,11 +32,7 @@ params:
   # navTitleText: Cupper Theme
   logoAlt: JRacaud
   customCss:
-    - css/custom_01.css
-    - css/custom_02.css
-  customJs:
-    - js/custom_01.js
-    - js/custom_02.js
+    - css/style.css
 
 menu:
   nav:
@@ -44,7 +40,7 @@ menu:
       url: /
       weight: 1
     - name: Blog
-      url: /post/
+      url: /blog/
       weight: 2
 
 markup:
