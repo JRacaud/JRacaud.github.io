@@ -1,6 +1,0 @@
-@font-face {
-    font-family: 'Fira Code', monospace;
-    src: url('{{ "css/fonts/FiraCode-Bold.woff2" | absURL }}') format('woff2'), url('{{ "css/fonts/FiraCode-Bold.woff" | absURL }}') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}

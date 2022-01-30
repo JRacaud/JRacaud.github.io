@@ -31,8 +31,6 @@ params:
   moveFooterToHeader: true
   # navTitleText: Cupper Theme
   logoAlt: JRacaud
-  customCss:
-    - css/style.css
 
 menu:
   nav:
