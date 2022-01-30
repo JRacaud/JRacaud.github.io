@@ -9,19 +9,32 @@ rm -rf ./public
 hugo --minify
 
 if [[ $? -ne 0 ]]; then
-    read -s "[ERROR]: Cannot generate website. Aborting...\nPress enter to exit..."
+    echo "[ERROR]: Cannot generate website. Aborting..."
+    read -s "Press enter to exit..."
     exit 1
 fi
 
 # Copy the files into a temp directory
 mkdir .deployed
-cp -r ./public/* .deployed
+cp -r ./public/* .deployed/
+
+if [[ $? -ne 0 ]]; then
+    echo "[ERROR]: Cannot backup website. Aborting..."
+    read -s "Press enter to exit..."
+    exit 1
+fi
 
 # Checkout gh-pages branch and update everything
 git checkout gh-pages
 rm -rf *
 
-mv ./deployed/* .
+cp -r ./deployed/* .
+
+if [[ $? -ne 0 ]]; then
+    echo "[ERROR]: Cannot copy website. Aborting..."
+    read -s "Press enter to exit..."
+    exit 1
+fi
 
 git commit -am $message
 git push
