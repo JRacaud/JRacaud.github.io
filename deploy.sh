@@ -8,6 +8,11 @@ rm -rf ./public
 # Generate the website
 hugo --minify
 
+if [[ $? -ne 0 ]]; then
+    read -s "[ERROR]: Cannot generate website. Aborting...\nPress enter to exit..."
+    exit 1
+fi
+
 # Copy the files into a temp directory
 mkdir .deployed
 cp -r ./public/* .deployed
