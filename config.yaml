@@ -20,7 +20,7 @@ imaging:
 params:
   description: Software developer that experiment with stuffs.
   homeMetaContent: Software developer that experiment with stuffs.
-  footer: Made with [Hugo](https://gohugo.io/). <br>Themed by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme).
+  footer: Made with [Hugo](https://gohugo.io/). <br>Base theme by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme).
   # For more date formats see https://gohugo.io/functions/format/
   dateFormat: 2 Jan 2006
   # codePenUser: someUser

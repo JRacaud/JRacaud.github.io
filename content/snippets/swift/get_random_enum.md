@@ -1,6 +1,6 @@
 ---
 title: "Swift - Get random enum"
-publish_date: "1 Jan 2022"
+publishdate: 30 Jan 2022
 ---
 ## Function definition
 ```swift
